@@ -14,20 +14,12 @@
 - [Load Balancing Algorithms and Techniques](https://kemptechnologies.com/load-balancer/load-balancing-algorithms-techniques/)
 - [Active/Passive vs. Active/Active](https://kemptechnologies.com/fr/white-papers/unfog-confusion-active-passive-activeactive-load-balancing/)
 
-## Tasks
+## Files
 
-<details>
 <summary><a href="./0-simple_web_stack.jpg">0. Simple web stack</a></summary><br>
-</details>
 
-<details>
 <summary><a href="./1-distributed_web_infrastructure.jpg">1. Distributed web infrastructure</a></summary><br>
-</details>
 
-<details>
 <summary><a href="./2-secured_and_monitored_web_infrastructure.jpg">2. Secured and monitored web infrastructure</a></summary><br>
-</details>
 
-<details>
 <summary><a href="./3-scale_up.jpg">3. Scale up</a></summary><br>
-</details>
