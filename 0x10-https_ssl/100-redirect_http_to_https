@@ -39,5 +39,5 @@ listen www
         bind *:443 ssl crt /etc/haproxy/certs/www.arvicrin.tech.pem
         http-request redirect scheme https unless { ssl_fc }
         balance roundrobin
-        server 20367-web-01 34.229.63.14:80 check
-        server 20367-web-02 100.27.49.144:80 check    
+        server 161880-web-01 34.229.63.14:80 check
+        server 161880-web-02 100.27.49.144:80 check    
