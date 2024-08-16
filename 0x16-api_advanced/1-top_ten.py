@@ -6,20 +6,47 @@ which queries the Reddit API
 
 import requests
 
-
 def top_ten(subreddit):
     """
-    prints the titles of the first 10
-    hot posts listed for a given subreddit
+    Prints the titles of the first 10 hot posts listed for a given subreddit.
     """
-    if subreddit is None or type(subreddit) is not str:
-        return 0
-    url = requests.get('http://www.reddit.com/r/{}/hot.json'.format(subreddit),
-                       headers={'User-Agent': 'Python/requests:APIproject:v1.0.0\
-                       (by /u/abukiplimo)'}, params={'limit': 10}).json()
-    posts = url.get('data', {}).get('children', None)
-    if posts is None or (len(posts) > 0 and posts[0].get('kind') != 't3'):
+    if not subreddit or not isinstance(subreddit, str):
         print(None)
-    else:
+        return
+
+    # Construct the URL for the subreddit's hot posts in JSON format
+    url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
+    
+    # Define headers for the HTTP request, including User-Agent
+    headers = {
+        "User-Agent": "Python/requests:APIproject:v1.0.0 (by /u/abukiplimo)"
+    }
+    
+    # Define parameters for the request, limit the results to 10 posts
+    params = {
+        "limit": 10
+    }
+    
+    # Send a GET request to the subreddit's hot posts page
+    try:
+        response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+        
+        # Check if the response status code indicates a not-found error (404) or invalid subreddit
+        if response.status_code != 200:
+            print(None)
+            return
+        
+        # Parse the JSON response and extract relevant data
+        data = response.json().get("data", {})
+        posts = data.get("children", [])
+        
+        # If no posts are found, print None
+        if not posts:
+            print(None)
+            return
+        
+        # Print the titles of the first 10 hot posts
         for post in posts:
-            print(post.get('data', {}).get('title', None))
+            print(post.get("data", {}).get("title", None))
+    except requests.RequestException:
+        print(None)
