@@ -47,6 +47,10 @@ def top_ten(subreddit):
         
         # Print the titles of the first 10 hot posts
         for post in posts:
-            print(post.get("data", {}).get("title", None))
+            title = post.get("data", {}).get("title", None)
+            if title:
+                print(title)
+            else:
+                print(None)
     except requests.RequestException:
         print(None)
